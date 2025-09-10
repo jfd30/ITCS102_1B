@@ -1,5 +1,5 @@
 print("Welcome to MangGodz ")
-manga = input("What is your preferred manga you want to read? (action / love / horror)")
+manga = input("What is your preferred manga you want to read? (action / romance / horror)")
 length = input("How long do you want? (short / medium / long)") 
 year = input("which year would you like to read? (2000s / 2010s): ")
 
@@ -54,3 +54,4 @@ if manga == 'horror':
             print("This is what I recomend you (Tokyo Ghoul)")
 
    
+
