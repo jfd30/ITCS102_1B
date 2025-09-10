@@ -6,52 +6,53 @@ year = input("which year would you like to read? (2000s / 2010s): ")
 if manga == 'action':
     if year == '2000s':
         if length == 'short':
-            print("This is what I recomend you (Samurai Champloo)")
+            print("This is what I recommend you (Samurai Champloo)")
         elif length == 'medium':
-            print("This is what I recomend you (Yu Yu Hakusho)")
+            print("This is what I recommend you (Yu Yu Hakusho)")
         else:
-            print("This is what I recomend you (One Piece)")
+            print("This is what I recommend you (One Piece)")
     if year == '2010s':
         if length == 'short':
-            print("This is what I recomend you (Demon Slayer)")
+            print("This is what I recommend you (Demon Slayer)")
         elif length == 'medium':
-            print("This is what I recomend you (HunterxHunter)")
+            print("This is what I recommend you (HunterxHunter)")
         else:
-            print("This is what I recomend you (Soul Eater)")
+            print("This is what I recommend you (Soul Eater)")
 
 
 if manga == 'romance':
     if year == '2000s':
         if length == 'short':
-            print("This is what I recomend you (Ouran OC High School)")
+            print("This is what I recommend you (Ouran OC High School)")
         elif length == 'medium':
-            print("This is what I recomend you (Fruit Basket)")
+            print("This is what I recommend you (Fruit Basket)")
         else:
-            print("This is what I recomend you (Kimi ni Todoke)")
+            print("This is what I recommend you (Kimi ni Todoke)")
     if year == '2010s':
         if length == 'short':
-            print("This is what I recomend you (My Bunny Girl Senpai)")
+            print("This is what I recommend you (My Bunny Girl Senpai)")
         elif length == 'medium':
-            print("This is what I recomend you (Ao Haru Ride)")
+            print("This is what I recommend you (Ao Haru Ride)")
         else:
-            print("This is what I recomend you (A Silent Voice)")
+            print("This is what I recommend you (A Silent Voice)")
 
 
 if manga == 'horror':
     if year == '2000s':
         if length == 'short':
-            print("This is what I recomend you (I am A Hero)")
+            print("This is what I recommend you (I am A Hero)")
         elif length == 'medium':
-            print("This is what I recomend you (Uzumaki)")
+            print("This is what I recommend you (Uzumaki)")
         else:
-            print("This is what I recomend you (Ghost Stories)")
+            print("This is what I recommend you (Ghost Stories)")
     if year == '2010s':
         if length == 'short':
-            print("This is what I recomend you (Made in Abyss)")
+            print("This is what I recommend you (Made in Abyss)")
         elif length == 'medium':
-            print("This is what I recomend you (Attack on Titan)")
+            print("This is what I recommend you (Attack on Titan)")
         else:
-            print("This is what I recomend you (Tokyo Ghoul)")
+            print("This is what I recommend you (Tokyo Ghoul)")
 
    
+
 
