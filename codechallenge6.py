@@ -1,13 +1,9 @@
-def sum_of_odd_numbers():
-    numbers = []
-    print("Please enter 7 numbers:")
-    for _ in range(7):
-        num = int(input("Enter a number: "))
-        numbers.append(num)
-    
-    odd_sum = sum(num for num in numbers if num % 2 != 0)
-    
-    print("Entered numbers:", numbers)
-    print("Sum of odd numbers:", odd_sum)
+print("Odd number Summation")
 
-sum_of_odd_numbers()
+sum = 0
+
+for x in range(0, 7, 1):
+    numbers = eval(input("Enter any number ---> "))
+    if numbers % 2:
+        sum += numbers
+print("The sum of all given odd is", sum)
