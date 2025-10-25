@@ -9,7 +9,7 @@ while True:
     list.append(anime)
 
 num = len(list)
-print("Your Anime List Contains:")
+print("Your List Contains:")
 for i in range(1,num+1,1):
     print(f'- {list[i-1]}')
 print("You know ball dawg")
