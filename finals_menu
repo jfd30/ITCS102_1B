@@ -1,15 +1,32 @@
-
-# ============================================
-# ITCS102 - FINAL PROJECT
-# ============================================
-
 import os
 
-# --- Utility Function ---
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-# --- MAIN MENU ---
+def welcome_screen():
+    clear_screen()
+    print("====================================")
+    print("      WELCOME TO PYTHON MENU")
+    print("====================================")
+
+    name = input("Hello! What's your name? ")
+    print(f"Nice to meet you, {name}!")
+
+    while True:
+        cont = input("Do you want to continue? (yes/no): ").strip().lower()
+
+        if cont == "yes":
+            return  # Go to main menu
+        elif cont == "no":
+            print("\nThank you for using the program!")
+            exit()
+        else:
+            print("Invalid input. Please type 'yes' or 'no'.")
+
+
+# ============================================
+# MAIN MENU
+# ============================================
 def main_menu():
     while True:
         clear_screen()
@@ -51,10 +68,10 @@ def main_menu():
         else:
             input("Invalid input. Press Enter to try again...")
 
-# ------------------------------------------------------
-# SUBMENU 1: PRINT STATEMENTS
-# ------------------------------------------------------
 
+# ============================================
+# PRINT STATEMENTS SUBMENU
+# ============================================
 def submenu_print():
     while True:
         clear_screen()
@@ -80,10 +97,9 @@ def submenu_print():
             input("Invalid choice. Press Enter to try again...")
 
 
-# ------------------------------------------------------
-# SUBMENU 2: VARIABLES
-# ------------------------------------------------------
-
+# ============================================
+# VARIABLES SUBMENU
+# ============================================
 def submenu_variables():
     while True:
         clear_screen()
@@ -110,10 +126,9 @@ def submenu_variables():
             input("Invalid choice. Press Enter to try again...")
 
 
-# ------------------------------------------------------
-# SUBMENU 3: OPERATORS
-# ------------------------------------------------------
-
+# ============================================
+# OPERATORS SUBMENU
+# ============================================
 def submenu_operators():
     while True:
         clear_screen()
@@ -141,10 +156,9 @@ def submenu_operators():
             input("Invalid choice. Press Enter to try again...")
 
 
-# ------------------------------------------------------
-# SUBMENU 4: CONDITIONALS
-# ------------------------------------------------------
-
+# ============================================
+# CONDITIONALS SUBMENU
+# ============================================
 def submenu_conditionals():
     while True:
         clear_screen()
@@ -175,10 +189,9 @@ def submenu_conditionals():
             input("Invalid choice. Press Enter to try again...")
 
 
-# ------------------------------------------------------
-# SUBMENU 5: LOOPS
-# ------------------------------------------------------
-
+# ============================================
+# LOOPS SUBMENU
+# ============================================
 def submenu_loops():
     while True:
         clear_screen()
@@ -207,10 +220,9 @@ def submenu_loops():
             input("Invalid choice. Press Enter to try again...")
 
 
-# ------------------------------------------------------
-# SUBMENU 6: LISTS
-# ------------------------------------------------------
-
+# ============================================
+# LISTS SUBMENU
+# ============================================
 def submenu_lists():
     while True:
         clear_screen()
@@ -240,10 +252,9 @@ def submenu_lists():
             input("Invalid choice. Press Enter to try again...")
 
 
-# ------------------------------------------------------
-# SUBMENU 7: FUNCTIONS
-# ------------------------------------------------------
-
+# ============================================
+# FUNCTIONS SUBMENU
+# ============================================
 def submenu_functions():
     while True:
         clear_screen()
@@ -272,10 +283,9 @@ def submenu_functions():
             input("Invalid choice. Press Enter to try again...")
 
 
-# ------------------------------------------------------
-# USER-DEFINED PROGRAM EXECUTION
-# ------------------------------------------------------
-
+# ============================================
+# USER-DEFINED PYTHON CODE EXECUTION
+# ============================================
 def run_user_program():
     clear_screen()
     print("==== USER-DEFINED PROGRAM EXECUTION ====")
@@ -298,12 +308,8 @@ def run_user_program():
     input("\nPress Enter to return to Main Menu...")
 
 
-# ------------------------------------------------------
+# ============================================
 # START PROGRAM
-# ------------------------------------------------------
-
+# ============================================
+welcome_screen()
 main_menu()
-```
-
----
-
