@@ -1,19 +1,19 @@
 some = (input("Enter a word: "))
-n = len(some)
-nsan = []
-for i in range(1, n + 1, 1):
+k = len(some)
+to = []
+for i in range(1, k + 1, 1):
     ask = int(input(f"Enter number {i}:"))
-    nsan.append(ask)
-print(nsan)
+    to.append(ask)
+print(to)
 print(f"The length of the word is {n}")
 total = 0
-for num in nsan:
+for num in to:
     total = total + num
 ave = total/n
 print(f"The average of the number is {ave}")
-if ave < n:
-    print(f"The length of the word '{ilan}' is less than the average.")
-elif ave > n:
-    print(f"The length of the word '{ilan}' is greater than the average.")
-elif ave == n:
-    print(f"The length of the word '{ilan}' is equal than the average.")
+if ave < k:
+    print(f"The length of the word '{hello}' is less than the average.")
+elif ave > k:
+    print(f"The length of the word '{hello}' is greater than the average.")
+elif ave == k:
+    print(f"The length of the word '{hello}' is equal than the average.")
