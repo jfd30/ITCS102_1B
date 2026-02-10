@@ -3,7 +3,7 @@ import tkinter as tkin
 window = tkin.Tk()
 
 window.title("Justin's Profile")
-window.geometry("500x500")
+window.geometry("600x600")
 window.resizable(True,True)
 window.configure(bg="pink")
 
