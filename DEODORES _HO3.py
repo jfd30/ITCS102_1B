@@ -6,16 +6,16 @@ window.title("Simple Calculator")
 result_label = tk.Label(window, text="Enter numbers and choose an operation", font=("Arial", 12))
 result_label.pack(pady=10)
 
-frame = tk.Frame(window, bg="lightblue", padx=20, pady=20)
+frame = tk.Frame(window, bg="purple", padx=20, pady=20)
 frame.pack()
 
-label1 = tk.Label(frame, text="Enter 1st Number:", bg="lightblue")
+label1 = tk.Label(frame, text="Enter 1st Number:", bg="purple")
 label1.grid(row=0, column=0, padx=10, pady=10)
 
 entry1 = tk.Entry(frame)
 entry1.grid(row=0, column=1, padx=10, pady=10)
 
-label2 = tk.Label(frame, text="Enter 2nd Number:", bg="lightblue")
+label2 = tk.Label(frame, text="Enter 2nd Number:", bg="purple")
 label2.grid(row=1, column=0, padx=10, pady=10)
 
 entry2 = tk.Entry(frame)
