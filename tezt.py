@@ -1,4 +1,4 @@
-mport tkinter as tk
+import tkinter as tk
 from datetime import datetime
 
 window = tk.Tk()
@@ -6,7 +6,6 @@ window.title("Profile Builder")
 window.geometry("500x250")
 window.config(bg="lightgreen")
 
-# VARIABLES
 first_name = tk.StringVar()
 middle_name = tk.StringVar()
 last_name = tk.StringVar()
@@ -14,7 +13,6 @@ birth_year = tk.StringVar()
 age_text = tk.StringVar()
 gender = tk.StringVar()
 
-# FUNCTIONS
 def compute_age(event):
     year = int(birth_year.get())
     current_year = datetime.now().year
@@ -45,10 +43,8 @@ def generate_id():
     tk.Label(id_window, text="Age: " + age_text.get().replace("Age: ","")).pack()
     tk.Label(id_window, text="Gender: " + gender.get()).pack()
 
-# TITLE
 tk.Label(window, text="Profile Builder", font=("Arial",14,"bold"), bg="lightgreen").pack(pady=5)
 
-# NAME FIELDS
 frame1 = tk.Frame(window, bg="lightgreen")
 frame1.pack()
 
@@ -60,7 +56,6 @@ tk.Label(frame1,text="First Name",bg="lightgreen").grid(row=1,column=0)
 tk.Label(frame1,text="Middle Name",bg="lightgreen").grid(row=1,column=1)
 tk.Label(frame1,text="Last Name",bg="lightgreen").grid(row=1,column=2)
 
-# BIRTH YEAR
 frame2 = tk.Frame(window, bg="lightgreen")
 frame2.pack(pady=5)
 
@@ -70,10 +65,8 @@ birth_entry.bind("<Return>", compute_age)
 
 tk.Label(frame2,text="Birth Year",bg="lightgreen").grid(row=1,column=0)
 
-# AGE DISPLAY
 tk.Label(window, textvariable=age_text, font=("Arial",12), bg="lightgreen").pack()
 
-# GENDER
 frame3 = tk.Frame(window, bg="lightgreen")
 frame3.pack()
 
@@ -85,7 +78,6 @@ tk.Radiobutton(frame3,text="Male",variable=gender,value="Male",
 tk.Radiobutton(frame3,text="Female",variable=gender,value="Female",
                command=change_color,bg="lightgreen").grid(row=0,column=2)
 
-# SUBMIT BUTTON
 submit_btn = tk.Button(window,text="Submit",command=generate_id,bg="white")
 submit_btn.pack(pady=10)
 
