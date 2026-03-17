@@ -3,7 +3,7 @@ from datetime import datetime
 
 root = tk.Tk()
 root.title("Profile Builder")
-root.geometry("600x300")
+root.geometry("650x300")
 root.configure(bg="#7ED957")  # green background
 
 # Variables
@@ -14,7 +14,8 @@ byear = tk.StringVar()
 age_text = tk.StringVar(value="Computing Age...")
 gender = tk.StringVar()
 
-# Functions
+# ================= FUNCTIONS =================
+
 def compute_age(event):
     try:
         year = int(byear.get())
@@ -24,11 +25,18 @@ def compute_age(event):
     except:
         age_text.set("Invalid Year")
 
-def change_bg():
+def change_color():
     if gender.get() == "Male":
-        root.configure(bg="#AEE2FF")
+        color = "#AEE2FF"
     else:
-        root.configure(bg="#FFB6C1")
+        color = "#FFB6C1"
+
+    root.config(bg=color)
+    form_frame.config(bg=color)
+
+    for widget in form_frame.winfo_children():
+        if isinstance(widget, (tk.Label, tk.Radiobutton)):
+            widget.config(bg=color)
 
 def hover_in(e):
     submit_btn.config(bg="lightgreen")
@@ -48,45 +56,56 @@ def show_id():
     tk.Label(top, text=age_text.get()).pack()
     tk.Label(top, text=f"Gender: {gender.get()}").pack()
 
+# ================= UI =================
+
 # Title
-tk.Label(root, text="Profile Builder", font=("Arial", 16, "bold"), bg="#7ED957").pack(pady=5)
+tk.Label(root, text="Profile Builder", font=("Arial", 16, "bold"),
+         bg="#7ED957").pack(pady=5)
 
-# Frame (like your box)
-frame = tk.Frame(root, bg="#7ED957", bd=2, relief="groove")
-frame.pack(padx=20, pady=10, fill="both")
+# Box frame
+form_frame = tk.Frame(root, bg="#7ED957", bd=2, relief="groove")
+form_frame.pack(padx=20, pady=10, fill="both")
 
-# Row 1 - Names
-tk.Entry(frame, textvariable=fname, width=20).grid(row=0, column=0, padx=5, pady=5)
-tk.Entry(frame, textvariable=mname, width=20).grid(row=0, column=1, padx=5, pady=5)
-tk.Entry(frame, textvariable=lname, width=20).grid(row=0, column=2, padx=5, pady=5)
+# ===== ROW 1: NAME FIELDS =====
+tk.Entry(form_frame, textvariable=fname, width=22).grid(row=0, column=0, padx=10, pady=5)
+tk.Entry(form_frame, textvariable=mname, width=22).grid(row=0, column=1, padx=10, pady=5)
+tk.Entry(form_frame, textvariable=lname, width=22).grid(row=0, column=2, padx=10, pady=5)
 
-tk.Label(frame, text="First Name", bg="#7ED957").grid(row=1, column=0)
-tk.Label(frame, text="Middle Name", bg="#7ED957").grid(row=1, column=1)
-tk.Label(frame, text="Last Name", bg="#7ED957").grid(row=1, column=2)
+tk.Label(form_frame, text="First Name", bg="#7ED957").grid(row=1, column=0)
+tk.Label(form_frame, text="Middle Name", bg="#7ED957").grid(row=1, column=1)
+tk.Label(form_frame, text="Last Name", bg="#7ED957").grid(row=1, column=2)
 
-# Row 2 - Birth Year + Age
-tk.Entry(frame, textvariable=byear, width=20).grid(row=2, column=0, padx=5, pady=5)
-tk.Label(frame, text="Birth Year", bg="#7ED957").grid(row=3, column=0)
-
-birth_entry = frame.grid_slaves(row=2, column=0)[0]
+# ===== ROW 2: BIRTH YEAR + AGE =====
+birth_entry = tk.Entry(form_frame, textvariable=byear, width=22)
+birth_entry.grid(row=2, column=0, padx=10, pady=5)
 birth_entry.bind("<Return>", compute_age)
 
-tk.Label(frame, textvariable=age_text, font=("Arial", 14, "italic"), bg="#7ED957").grid(row=2, column=1, columnspan=2)
+tk.Label(form_frame, text="Birth Year", bg="#7ED957").grid(row=3, column=0)
 
-# Gender
-tk.Label(frame, text="Gender", bg="#7ED957").grid(row=4, column=0)
+# "Computing Age..." on the right (big text)
+tk.Label(form_frame, textvariable=age_text,
+         font=("Arial", 16, "italic"),
+         bg="#7ED957").grid(row=2, column=1, columnspan=2, pady=10)
 
-tk.Radiobutton(frame, text="Male", variable=gender, value="Male",
-               command=change_bg, bg="#7ED957").grid(row=4, column=1)
+# ===== ROW 3: GENDER =====
+tk.Label(form_frame, text="Gender", bg="#7ED957").grid(row=4, column=0)
 
-tk.Radiobutton(frame, text="Female", variable=gender, value="Female",
-               command=change_bg, bg="#7ED957").grid(row=4, column=2)
+tk.Radiobutton(form_frame, text="Male", variable=gender,
+               value="Male", command=change_color,
+               bg="#7ED957").grid(row=4, column=1, sticky="w")
 
-# Submit Button
-submit_btn = tk.Button(root, text="Submit", command=show_id, font=("Arial", 10, "bold"))
+tk.Radiobutton(form_frame, text="Female", variable=gender,
+               value="Female", command=change_color,
+               bg="#7ED957").grid(row=4, column=2, sticky="w")
+
+# ===== SUBMIT BUTTON =====
+submit_btn = tk.Button(root, text="Submit",
+                       font=("Arial", 12, "bold"),
+                       command=show_id)
 submit_btn.pack(pady=10)
 
 submit_btn.bind("<Enter>", hover_in)
 submit_btn.bind("<Leave>", hover_out)
 
+# Run
 root.mainloop()
