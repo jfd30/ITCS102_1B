@@ -1,81 +1,92 @@
-     import tkinter as tk
-from tkinter import ttk
+import tkinter as tk
 from datetime import datetime
 
-# Main window
 root = tk.Tk()
-root.title("Student ID Generator")
-root.geometry("400x400")
+root.title("Profile Builder")
+root.geometry("600x300")
+root.configure(bg="#7ED957")  # green background
 
 # Variables
-first_name = tk.StringVar()
-middle_name = tk.StringVar()
-last_name = tk.StringVar()
-birth_year = tk.StringVar()
-age = tk.StringVar()
+fname = tk.StringVar()
+mname = tk.StringVar()
+lname = tk.StringVar()
+byear = tk.StringVar()
+age_text = tk.StringVar(value="Computing Age...")
 gender = tk.StringVar()
 
 # Functions
-def calculate_age(event):
+def compute_age(event):
     try:
-        year = int(birth_year.get())
-        current_year = datetime.now().year
-        computed_age = current_year - year
-        age.set(str(computed_age))
+        year = int(byear.get())
+        current = datetime.now().year
+        age = current - year
+        age_text.set(f"Age: {age}")
     except:
-        age.set("Invalid")
+        age_text.set("Invalid Year")
 
 def change_bg():
     if gender.get() == "Male":
-        root.config(bg="lightblue")
-    elif gender.get() == "Female":
-        root.config(bg="lightpink")
+        root.configure(bg="#AEE2FF")
+    else:
+        root.configure(bg="#FFB6C1")
 
-def on_enter(e):
+def hover_in(e):
     submit_btn.config(bg="lightgreen")
 
-def on_leave(e):
+def hover_out(e):
     submit_btn.config(bg="SystemButtonFace")
 
-def generate_id():
+def show_id():
     top = tk.Toplevel(root)
-    top.title("Student ID Card")
+    top.title("Student ID")
     top.geometry("300x200")
 
-    full_name = f"{first_name.get()} {middle_name.get()} {last_name.get()}"
+    full = f"{fname.get()} {mname.get()} {lname.get()}"
 
-    tk.Label(top, text="STUDENT ID", font=("Arial", 14, "bold")).pack(pady=5)
-    tk.Label(top, text=f"Name: {full_name}").pack()
-    tk.Label(top, text=f"Age: {age.get()}").pack()
+    tk.Label(top, text="STUDENT ID", font=("Arial", 14, "bold")).pack(pady=10)
+    tk.Label(top, text=f"Name: {full}").pack()
+    tk.Label(top, text=age_text.get()).pack()
     tk.Label(top, text=f"Gender: {gender.get()}").pack()
 
-# UI Layout
-tk.Label(root, text="First Name").pack()
-tk.Entry(root, textvariable=first_name).pack()
+# Title
+tk.Label(root, text="Profile Builder", font=("Arial", 16, "bold"), bg="#7ED957").pack(pady=5)
 
-tk.Label(root, text="Middle Name").pack()
-tk.Entry(root, textvariable=middle_name).pack()
+# Frame (like your box)
+frame = tk.Frame(root, bg="#7ED957", bd=2, relief="groove")
+frame.pack(padx=20, pady=10, fill="both")
 
-tk.Label(root, text="Last Name").pack()
-tk.Entry(root, textvariable=last_name).pack()
+# Row 1 - Names
+tk.Entry(frame, textvariable=fname, width=20).grid(row=0, column=0, padx=5, pady=5)
+tk.Entry(frame, textvariable=mname, width=20).grid(row=0, column=1, padx=5, pady=5)
+tk.Entry(frame, textvariable=lname, width=20).grid(row=0, column=2, padx=5, pady=5)
 
-tk.Label(root, text="Birth Year").pack()
-birth_entry = tk.Entry(root, textvariable=birth_year)
-birth_entry.pack()
-birth_entry.bind("<Return>", calculate_age)
+tk.Label(frame, text="First Name", bg="#7ED957").grid(row=1, column=0)
+tk.Label(frame, text="Middle Name", bg="#7ED957").grid(row=1, column=1)
+tk.Label(frame, text="Last Name", bg="#7ED957").grid(row=1, column=2)
 
-tk.Label(root, text="Age").pack()
-tk.Entry(root, textvariable=age, state="readonly").pack()
+# Row 2 - Birth Year + Age
+tk.Entry(frame, textvariable=byear, width=20).grid(row=2, column=0, padx=5, pady=5)
+tk.Label(frame, text="Birth Year", bg="#7ED957").grid(row=3, column=0)
 
-tk.Label(root, text="Gender").pack()
-tk.Radiobutton(root, text="Male", variable=gender, value="Male", command=change_bg).pack()
-tk.Radiobutton(root, text="Female", variable=gender, value="Female", command=change_bg).pack()
+birth_entry = frame.grid_slaves(row=2, column=0)[0]
+birth_entry.bind("<Return>", compute_age)
 
-submit_btn = tk.Button(root, text="Submit", command=generate_id)
+tk.Label(frame, textvariable=age_text, font=("Arial", 14, "italic"), bg="#7ED957").grid(row=2, column=1, columnspan=2)
+
+# Gender
+tk.Label(frame, text="Gender", bg="#7ED957").grid(row=4, column=0)
+
+tk.Radiobutton(frame, text="Male", variable=gender, value="Male",
+               command=change_bg, bg="#7ED957").grid(row=4, column=1)
+
+tk.Radiobutton(frame, text="Female", variable=gender, value="Female",
+               command=change_bg, bg="#7ED957").grid(row=4, column=2)
+
+# Submit Button
+submit_btn = tk.Button(root, text="Submit", command=show_id, font=("Arial", 10, "bold"))
 submit_btn.pack(pady=10)
 
-# Hover effect
-submit_btn.bind("<Enter>", on_enter)
-submit_btn.bind("<Leave>", on_leave)
+submit_btn.bind("<Enter>", hover_in)
+submit_btn.bind("<Leave>", hover_out)
 
-root.mainloop()   
+root.mainloop()
