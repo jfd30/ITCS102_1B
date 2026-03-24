@@ -99,5 +99,4 @@ tk.Button(window, text="Register", bg="blue", fg="white",
 tk.Button(window, text="Log In", bg="green", fg="white",
           width=20, command=open_login).pack(pady=5)
 
-# Run
-root.mainloop()
+window.mainloop()
