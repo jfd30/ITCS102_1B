@@ -14,7 +14,7 @@ def open_register():
     reg = tk.Toplevel(window)
     reg.title("Register")
     reg.geometry("300x200")
-    reg.configure(bg="green")
+    reg.configure(bg="lightblue")
 
     username = tk.StringVar()
     password = tk.StringVar()
