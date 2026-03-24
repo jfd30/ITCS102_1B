@@ -1,20 +1,17 @@
 import tkinter as tk
 from tkinter import messagebox
 
-# Store credentials (simple storage)
 stored_username = ""
 stored_password = ""
 
-# ================= MAIN WINDOW =================
-root = tk.Tk()
-root.title("Module 10 Exam")
-root.geometry("300x200")
+window = tk.Tk()
+window.title("Module 10 Exam")
+window.geometry("300x200")
 
-tk.Label(root, text="Welcome!", font=("Arial", 14)).pack(pady=10)
+tk.Label(window, text="Welcome!", font=("Arial", 14)).pack(pady=10)
 
-# ================= REGISTER WINDOW =================
 def open_register():
-    reg = tk.Toplevel(root)
+    reg = tk.Toplevel(window)
     reg.title("Register")
     reg.geometry("300x200")
     reg.configure(bg="green")
@@ -58,9 +55,8 @@ def open_register():
 
     tk.Button(reg, text="Register", command=register_user).pack(pady=5)
 
-# ================= LOGIN WINDOW =================
 def open_login():
-    log = tk.Toplevel(root)
+    log = tk.Toplevel(window)
     log.title("Log In")
     log.geometry("300x200")
     log.configure(bg="red")
@@ -97,11 +93,10 @@ def open_login():
 
     tk.Button(log, text="Log In", command=login_user).pack(pady=5)
 
-# ================= BUTTONS =================
-tk.Button(root, text="Register", bg="blue", fg="white",
+tk.Button(window, text="Register", bg="blue", fg="white",
           width=20, command=open_register).pack(pady=5)
 
-tk.Button(root, text="Log In", bg="green", fg="white",
+tk.Button(window, text="Log In", bg="green", fg="white",
           width=20, command=open_login).pack(pady=5)
 
 # Run
