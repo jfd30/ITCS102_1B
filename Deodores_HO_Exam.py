@@ -1,4 +1,4 @@
-import tkinter as tk
+mport tkinter as tk
 from tkinter import messagebox
 
 stored_username = ""
@@ -39,19 +39,19 @@ def open_register():
             stored_password = pwd
             messagebox.showinfo("Success", "You have successfully registered!")
 
-    tk.Label(reg, text="Register", bg="green", font=("Arial", 14)).pack(pady=5)
+    tk.Label(reg, text="Register", bg="lightblue", font=("Arial", 14)).pack(pady=5)
 
-    tk.Label(reg, text="Username:", bg="green").pack()
+    tk.Label(reg, text="Username:", bg="lightblue").pack()
     tk.Entry(reg, textvariable=username).pack()
 
-    tk.Label(reg, text="Password:", bg="green").pack()
+    tk.Label(reg, text="Password:", bg="lightblue").pack()
     pass_entry = tk.Entry(reg, textvariable=password, show="*")
     pass_entry.pack()
 
     tk.Checkbutton(reg, text="See Password",
                    variable=show_pass,
                    command=toggle_password,
-                   bg="green").pack()
+                   bg="lightblue").pack()
 
     tk.Button(reg, text="Register", command=register_user).pack(pady=5)
 
@@ -59,7 +59,7 @@ def open_login():
     log = tk.Toplevel(window)
     log.title("Log In")
     log.geometry("300x200")
-    log.configure(bg="red")
+    log.configure(bg="purple")
 
     username = tk.StringVar()
     password = tk.StringVar()
@@ -77,19 +77,19 @@ def open_login():
         else:
             messagebox.showerror("Error", "Incorrect Username or Password")
 
-    tk.Label(log, text="Log In", bg="red", font=("Arial", 14)).pack(pady=5)
+    tk.Label(log, text="Log In", bg="purple", font=("Arial", 14)).pack(pady=5)
 
-    tk.Label(log, text="Username:", bg="red").pack()
+    tk.Label(log, text="Username:", bg="purple").pack()
     tk.Entry(log, textvariable=username).pack()
 
-    tk.Label(log, text="Password:", bg="red").pack()
+    tk.Label(log, text="Password:", bg="purple").pack()
     pass_entry = tk.Entry(log, textvariable=password, show="*")
     pass_entry.pack()
 
     tk.Checkbutton(log, text="See Password",
                    variable=show_pass,
                    command=toggle_password,
-                   bg="red").pack()
+                   bg="purple").pack()
 
     tk.Button(log, text="Log In", command=login_user).pack(pady=5)
 
