@@ -5,7 +5,7 @@ stored_username = ""
 stored_password = ""
 
 window = tk.Tk()
-window.title("Module 10 Exam")
+window.title("Deodores HO Exam")
 window.geometry("300x200")
 
 tk.Label(window, text="Welcome!", font=("Arial", 14)).pack(pady=10)
