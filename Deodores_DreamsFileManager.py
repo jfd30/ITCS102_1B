@@ -1,7 +1,6 @@
 import os
 
 def display_menu():
-    """Prints the main menu options to the console."""
     print("\n==== DREAMS FILE MANAGER ====")
     print("1. Read inspiring messages")
     print("2. Add a new inspiring message")
@@ -9,7 +8,6 @@ def display_menu():
     print("4. Exit")
 
 def read_messages(filename):
-    """Reads and displays all lines from the text file."""
     print("\n--- Inspiring Messages ---")
     try:
         with open(filename, "r") as file:
@@ -22,18 +20,15 @@ def read_messages(filename):
         print(f"Error: {filename} not found.")
 
 def add_message(filename):
-    """Appends a new user-provided message to the end of the file."""
     new_message = input("Enter your new inspiring line: ")
     try:
         with open(filename, "a") as file:
-            # Ensure the new message starts on a new line
             file.write("\n" + new_message)
         print("Your inspiration has been added!")
     except Exception as e:
         print(f"An error occurred: {e}")
 
 def rewrite_file(filename):
-    """Overwrites the existing file with new content after user confirmation."""
     confirm = input("Are you sure you want to rewrite the entire file? (yes/no): ").lower()
     if confirm == 'yes':
         new_content = input("Enter the new content for the file:\n")
@@ -47,7 +42,6 @@ def rewrite_file(filename):
         print("Operation cancelled.")
 
 def main():
-    # Use the filename provided in your instructions
     filename = "dreams.txt"
 
     while True:
