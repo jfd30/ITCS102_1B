@@ -1,54 +1,57 @@
 import openpyxl
 from datetime import datetime
-import os
 
-def calculate_age(birth_year):
+def create_favorite_people_file():
+    # 1. Initialize variables
     current_year = datetime.now().year
-    return current_year - birth_year
-
-def main():
-    filename = "favorite_people.xlsx"
     people_data = []
+    filename = "favorite_people.xlsx"
 
-    print("--- Favorite People Recorder ---")
-    
+    print("--- Enter details for your 3 favorite people ---")
+
+    # 2. Accept user input for 3 people
     for i in range(1, 4):
-        print(f"\nEnter details for Person #{i}:")
-        first_name = input("First Name: ")
-        last_name = input("Last Name: ")
+        print(f"\nPerson #{i}:")
+        first_name = input("First Name: ").strip()
+        last_name = input("Last Name: ").strip()
         
-        while True:
-            try:
-                birth_year = int(input("Birth Year (YYYY): "))
-                break
-            except ValueError:
-                print("Invalid input. Please enter a numerical year.")
+        try:
+            birth_year = int(input("Birth Year (e.g., 1995): "))
+            # 3. Automatically compute age and assign ID
+            age = current_year - birth_year
+            person_id = i
+            
+            # Store data in a list to process later
+            people_data.append([person_id, first_name, last_name, birth_year, age])
+        except ValueError:
+            print("Invalid input for birth year. Please restart the program and enter a number.")
+            return
 
-        age = calculate_age(birth_year)
-        person_id = i
-        
-        people_data.append([person_id, first_name, last_name, birth_year, age])
-
+    # 4. Create and write data into an Excel file
     workbook = openpyxl.Workbook()
     sheet = workbook.active
     sheet.title = "Favorite People"
-    
+
+    # Define Column Headers
     headers = ["ID", "First Name", "Last Name", "Birth Year", "Age"]
     sheet.append(headers)
 
+    # 5. Store all user input in the Excel file
     for person in people_data:
         sheet.append(person)
 
+    # Save the file
     workbook.save(filename)
-    print(f"\nSuccess! Records have been saved to {filename}.")
+    print(f"\nSuccessfully saved to {filename}!")
 
-    print("\n--- Saved Records Summary ---")
+    # 6. Display all saved records in the console
+    print("\n--- Saved Records ---")
     print(f"{'ID':<5} {'First Name':<15} {'Last Name':<15} {'Birth Year':<12} {'Age':<5}")
     print("-" * 55)
     
     for row in people_data:
-        p_id, f_name, l_name, b_year, p_age = row
-        print(f"{p_id:<5} {f_name:<15} {l_name:<15} {b_year:<12} {p_age:<5}")
+        p_id, f_name, l_name, b_year, age = row
+        print(f"{p_id:<5} {f_name:<15} {l_name:<15} {b_year:<12} {age:<5}")
 
 if __name__ == "__main__":
-    main()
+    create_favorite_people_file()
